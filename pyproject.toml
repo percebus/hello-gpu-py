@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "hello-gpu-py"
+version = "0.1.0"
+description = "GPU python excercises"
+authors = ["JC Guerrero <JCystems@gMail.com>"]
+license = "SEE LICENSE IN LICENSE.md"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+cuda-python = "^12.6.1"
+numpy = "^2.1.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+ruff = "^0.7.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
