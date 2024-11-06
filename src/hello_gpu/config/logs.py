@@ -17,7 +17,8 @@ class Logging:
             logger.debug("Configuring logger with dictConfig")
             logging.config.dictConfig(self.config)
         else:
-            logging.basicConfig(level=logging.INFO)
+            logging.basicConfig()
+            logger.setLevel(logging.INFO)
             logger.debug("Configuring logger with basicConfig")
 
         return logger
