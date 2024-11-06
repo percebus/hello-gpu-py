@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import math
+import sys
 
 import torch
 
 from src.hello_gpu.config.configuration import configuration
 
-logger = configuration.logging.get_logger()
+logger = configuration.get_logger(sys.modules[__name__].__name__)
 
 
 def create_neural_network(size: int = 2000) -> None:
@@ -41,7 +42,7 @@ def create_neural_network(size: int = 2000) -> None:
         # loss.item() gets the scalar value held in the loss.
         loss = (y_pred - y).pow(2).sum()
         if t % 100 == 99:
-            logger.debug(t, loss.item())
+            logger.debug("%d%d", t, loss.item())
 
         # Use autograd to compute the backward pass. This call will compute the
         # gradient of loss with respect to all Tensors with requires_grad=True.
@@ -64,4 +65,4 @@ def create_neural_network(size: int = 2000) -> None:
             c.grad = None
             d.grad = None
 
-    logger.debug(f"Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3")
+    logger.debug("Result: y = %d + %d x + %d x^2 + %d x^3", a.item(), b.item(), c.item(), d.item())

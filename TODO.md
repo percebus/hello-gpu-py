@@ -3,6 +3,7 @@
 ## 'To-Do's
 
 - [ ] Fix `src/` directory structure & imports.
+- [ ] Change `logger` to something that supports structured logging.
 
 ## Completed
 

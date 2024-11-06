@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -5,7 +6,9 @@ from src.hello_gpu.config.configuration import configuration
 from src.hello_gpu.cuda_.overview import verification as cuda_verification
 from src.hello_gpu.torch_.examples.warm_up.neural_network.benchmark import simple as torch_benchmark
 
-logger = configuration.logging.get_logger()
+# logger = logging.getLogger(__name__)
+# logger.setLevel(logging.DEBUG)
+logger = configuration.get_logger(__name__)
 
 
 def get_name() -> str:
@@ -28,5 +31,7 @@ def run_benchmarks() -> None:
 
 
 def run() -> None:
+    logger.info("Running application")
     run_verifications()
     run_benchmarks()
+    logger.info("Application finished")

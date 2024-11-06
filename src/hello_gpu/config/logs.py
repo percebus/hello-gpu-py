@@ -10,20 +10,21 @@ from typing import Any, Optional
 class Logging:
     config: Optional[dict[str, Any]] = field(init=False, default=None)
 
-    logger: Logger = field(init=False)
-
-    def get_logger(self, name: str = __name__) -> Logger:
+    def create_logger(self, name: str = __name__) -> Logger:
         logger: Logger = logging.getLogger(name)
-        logger.propagate = False
+        # logger.propagate = False # TODO?
         if self.config:
+            logger.debug("Configuring logger with dictConfig")
             logging.config.dictConfig(self.config)
+        else:
+            logging.basicConfig(level=logging.INFO)
+            logger.debug("Configuring logger with basicConfig")
 
         return logger
 
-    def configure(self, path: str = None) -> None:
+    # TODO change for logging.config
+    def load_configuration(self, path: str = None) -> None:
+        logging.debug("Loading logging configuration from file %s", path)
         _path = path or "data/config/logging.json"
         with open(_path, "r", encoding="utf-8") as f:
             self.config = json.load(f)
-
-    def __post_init__(self) -> None:
-        self.logger = self.get_logger()

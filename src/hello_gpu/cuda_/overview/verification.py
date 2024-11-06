@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 from cuda.bindings import driver, nvrtc
 
@@ -5,7 +7,7 @@ from src.hello_gpu.config.configuration import configuration
 from src.hello_gpu.cuda_.overview.errors import checkCudaErrors
 from src.hello_gpu.cuda_.overview.kernel import saxpy
 
-logger = configuration.logging.get_logger()
+logger = configuration.get_logger(sys.modules[__name__].__name__)
 
 
 """

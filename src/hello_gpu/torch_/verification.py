@@ -1,8 +1,10 @@
+import sys
+
 import torch
 
 from src.hello_gpu.config.configuration import configuration
 
-logger = configuration.logging.get_logger()
+logger = configuration.get_logger(sys.modules[__name__].__name__)
 
 
 # SRC: https://pytorch.org/get-started/locally/#windows-pip

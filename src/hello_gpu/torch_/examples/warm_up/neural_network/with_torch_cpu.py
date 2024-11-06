@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import math
+import sys
 
 import torch
 
 from src.hello_gpu.config.configuration import configuration
 
-logger = configuration.logging.get_logger()
+logger = configuration.get_logger(sys.modules[__name__].__name__)
 
 
 def create_neural_network(size: int = 2000) -> None:
@@ -32,7 +33,7 @@ def create_neural_network(size: int = 2000) -> None:
         # Compute and print loss
         loss = (y_pred - y).pow(2).sum().item()
         if t % 100 == 99:
-            logger.debug(t, loss)
+            logger.debug("%d%d", t, loss)
 
         # Backprop to compute gradients of a, b, c, d with respect to loss
         grad_y_pred = 2.0 * (y_pred - y)
@@ -47,4 +48,4 @@ def create_neural_network(size: int = 2000) -> None:
         c -= learning_rate * grad_c
         d -= learning_rate * grad_d
 
-    logger.debug(f"Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3")
+    logger.debug("Result: y = %d + %d x + %d x^2 + %d x^3", a.item(), b.item(), c.item(), d.item())

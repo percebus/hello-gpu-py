@@ -1,18 +1,10 @@
-import logging
-from typing import TYPE_CHECKING
-
 from src.hello_gpu.config.configuration import configuration
 
-if TYPE_CHECKING:
-    from src.hello_gpu.config.settings import Settings
-
-logger = logging.getLogger(__name__)
+logger = configuration.get_logger()
 
 
 def run() -> None:
-    settings: Settings = configuration.settings
-    logger.debug(settings.safe_model_dump())
-    print(settings.model_dump())
+    print(configuration.settings)
 
 
 if __name__ == "__main__":

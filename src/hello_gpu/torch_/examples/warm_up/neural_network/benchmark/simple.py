@@ -1,9 +1,11 @@
 import logging
+import sys
 import timeit
 
+from src.hello_gpu.config.configuration import configuration
 from src.hello_gpu.torch_.examples.warm_up.neural_network import with_numpy, with_torch_cpu, with_torch_cuda
 
-logger = logging.getLogger(__name__)
+logger = configuration.get_logger(sys.modules[__name__].__name__)
 
 
 def run() -> None:
@@ -24,4 +26,5 @@ def run() -> None:
 
 
 if __name__ == "__main__":
+    logger.setLevel(logging.INFO)
     run()
