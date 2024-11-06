@@ -18,12 +18,14 @@ def verify_tensor() -> None:
 
 
 def verify_cuda() -> bool:
+    print(torch.version.cuda)
     is_available = torch.cuda.is_available()
-    if is_available:
-        print('CUDA is available')
-        return is_available
-    else:
+    if not is_available:
         raise ValueError('CUDA is not available')
+
+    print('CUDA is available')
+    print(torch.cuda.get_device_properties(0).total_memory)
+    return is_available
 
 
 def verify_all() -> None:
