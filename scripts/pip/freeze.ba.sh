@@ -1,9 +1,9 @@
 #!/bin/bash
 
 set -e
-set -x
+set -v
 
 pip freeze > requirements.frozen.txt
 
-set +x
+set +v
 set +e
