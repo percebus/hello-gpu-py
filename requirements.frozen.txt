@@ -4,7 +4,7 @@ colorama==0.4.6
 cuda-python==12.6.1
 filelock==3.16.1
 fsspec==2024.10.0
--e git+ssh://git@github.com/percebus/hello-gpu-py.git@66364a46c6683651c0a053b892880a11bfbdb863#egg=hello_gpu_py
+-e git+ssh://git@github.com/percebus/hello-gpu-py.git@7518ad828a026138f57eff2fb08304dd9553d169#egg=hello_gpu_py
 iniconfig==2.0.0
 Jinja2==3.1.4
 MarkupSafe==3.0.2
