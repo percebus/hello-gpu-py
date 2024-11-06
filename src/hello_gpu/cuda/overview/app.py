@@ -2,8 +2,7 @@ import numpy as np
 from cuda.bindings import driver, nvrtc
 
 from src.hello_gpu.cuda.overview.errors import checkCudaErrors
-
-from .kernel import saxpy
+from src.hello_gpu.cuda.overview.kernel import saxpy
 
 """
 In the following code example, the Driver API is initialized so that the NVIDIA driver and GPU are accessible.
