@@ -1,9 +1,4 @@
-from src.hello_gpu.verification import verify_all
-
-
-def run() -> None:
-    verify_all()
-
+from src.hello_gpu import app
 
 if __name__ == "__main__":
-    run()
+    app.run()

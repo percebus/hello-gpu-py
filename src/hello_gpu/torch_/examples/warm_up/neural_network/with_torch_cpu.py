@@ -4,14 +4,18 @@ import math
 
 import torch
 
+from src.hello_gpu.config.configuration import configuration
 
-def run() -> None:
+logger = configuration.logging.get_logger()
+
+
+def create_neural_network(size: int = 2000) -> None:
     dtype = torch.float
     device = torch.device("cpu")
     # device = torch.device("cuda:0") # Uncomment this to run on GPU
 
     # Create random input and output data
-    x = torch.linspace(-math.pi, math.pi, 2000, device=device, dtype=dtype)
+    x = torch.linspace(-math.pi, math.pi, size, device=device, dtype=dtype)
     y = torch.sin(x)
 
     # Randomly initialize weights
@@ -21,14 +25,14 @@ def run() -> None:
     d = torch.randn((), device=device, dtype=dtype)
 
     learning_rate = 1e-6
-    for t in range(2000):
+    for t in range(size):
         # Forward pass: compute predicted y
         y_pred = a + b * x + c * x**2 + d * x**3
 
         # Compute and print loss
         loss = (y_pred - y).pow(2).sum().item()
         if t % 100 == 99:
-            print(t, loss)
+            logger.debug(t, loss)
 
         # Backprop to compute gradients of a, b, c, d with respect to loss
         grad_y_pred = 2.0 * (y_pred - y)
@@ -43,8 +47,4 @@ def run() -> None:
         c -= learning_rate * grad_c
         d -= learning_rate * grad_d
 
-    print(f"Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3")
-
-
-if __name__ == "__main__":
-    run()
+    logger.debug(f"Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3")

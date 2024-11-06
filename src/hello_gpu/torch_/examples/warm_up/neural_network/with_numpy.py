@@ -4,10 +4,14 @@ import math
 
 import numpy as np
 
+from src.hello_gpu.config.configuration import configuration
 
-def run() -> None:
+logger = configuration.logging.get_logger()
+
+
+def create_neural_network(size: int = 2000) -> None:
     # Create random input and output data
-    x = np.linspace(-math.pi, math.pi, 2000)
+    x = np.linspace(-math.pi, math.pi, size)
     y = np.sin(x)
 
     # Randomly initialize weights
@@ -17,7 +21,7 @@ def run() -> None:
     d = np.random.randn()
 
     learning_rate = 1e-6
-    for t in range(2000):
+    for t in range(size):
         # Forward pass: compute predicted y
         # y = a + b x + c x^2 + d x^3
         y_pred = a + b * x + c * x**2 + d * x**3
@@ -25,7 +29,7 @@ def run() -> None:
         # Compute and print loss
         loss = np.square(y_pred - y).sum()
         if t % 100 == 99:
-            print(t, loss)
+            logger.debug(t, loss)
 
         # Backprop to compute gradients of a, b, c, d with respect to loss
         grad_y_pred = 2.0 * (y_pred - y)
@@ -40,8 +44,4 @@ def run() -> None:
         c -= learning_rate * grad_c
         d -= learning_rate * grad_d
 
-    print(f"Result: y = {a} + {b} x + {c} x^2 + {d} x^3")
-
-
-if __name__ == "__main__":
-    run()
+    logger.debug(f"Result: y = {a} + {b} x + {c} x^2 + {d} x^3")

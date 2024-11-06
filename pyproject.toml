@@ -13,8 +13,11 @@ python = "^3.12"
 # FIXME ~12.6.2 fails
 # "Unable to find installation candidates for cuda-python (12.6.2)"
 cuda-python = "12.6.1"
+logging = "^0.4.9.6"
 
 numpy = "^2.1.3"
+pydantic = "^2.9.2"
+pydantic-settings = "^2.6.1"
 torch = {version = "^2.5.1+cu124", source = "pytorch-gpu"}
 torchaudio = {version = "^2.5.1+cu124", source = "pytorch-gpu"}
 torchvision = {version = "^0.20.1+cu124", source = "pytorch-gpu"}

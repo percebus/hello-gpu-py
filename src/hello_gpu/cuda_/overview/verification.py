@@ -1,8 +1,12 @@
 import numpy as np
 from cuda.bindings import driver, nvrtc
 
+from src.hello_gpu.config.configuration import configuration
 from src.hello_gpu.cuda_.overview.errors import checkCudaErrors
 from src.hello_gpu.cuda_.overview.kernel import saxpy
+
+logger = configuration.logging.get_logger()
+
 
 """
 In the following code example, the Driver API is initialized so that the NVIDIA driver and GPU are accessible.
@@ -128,4 +132,4 @@ def verify() -> None:
     checkCudaErrors(driver.cuModuleUnload(module))
     checkCudaErrors(driver.cuCtxDestroy(context))
 
-    print("All checks pass")
+    logger.info("All checks pass")

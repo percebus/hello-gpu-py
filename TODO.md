@@ -3,4 +3,7 @@
 ## 'To-Do's
 
 - [ ] Fix `src/` directory structure & imports.
-- [ ] Replace `print()` statements with `logging` module.
+
+## Completed
+
+- [x] ~~Replace `print()` statements with `logging` module.~~

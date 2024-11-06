@@ -1,5 +1,9 @@
 import torch
 
+from src.hello_gpu.config.configuration import configuration
+
+logger = configuration.logging.get_logger()
+
 
 # SRC: https://pytorch.org/get-started/locally/#windows-pip
 def verify_tensor() -> None:
@@ -13,20 +17,21 @@ def verify_tensor() -> None:
     #   [0.4675, 0.3947, 0.1426]
     # ])
     x = torch.rand(5, 3)
-    print(x)
-    print("tensor is available")
+    logger.debug(x)
+    logger.info("tensor is available")
 
 
 def verify_cuda() -> bool:
-    print(torch.version.cuda)
+    logger.debug(torch.version.cuda)
     is_available = torch.cuda.is_available()
     if not is_available:
+        logger.error("CUDA is not available")
         raise ValueError("CUDA is not available")
 
-    print("CUDA is available")
+    logger.info("CUDA is available")
 
     # SRC: https://saturncloud.io/blog/pytorch-says-that-cuda-is-not-available-troubleshooting-guide-for-data-scientists/#:~:text=The%20no%20CUDA%2Dcapable%20device%20is%20detected%20error%20in%20PyTorch,issues%2C%20and%20insufficient%20GPU%20memory.
-    print(torch.cuda.get_device_properties(0).total_memory)
+    logger.info(torch.cuda.get_device_properties(0).total_memory)
     return is_available
 
 
