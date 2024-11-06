@@ -19,3 +19,10 @@ steps:
     run: "{npm}"
     in:
       cmd: "npx prettier {path} --check"
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: "=== ruff check =============================================="
+  - name: pypyr.steps.shell
+    in:
+      cmd: python -m ruff check {path}

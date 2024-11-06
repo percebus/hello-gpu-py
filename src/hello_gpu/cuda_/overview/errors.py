@@ -5,6 +5,7 @@ Error checking is a fundamental best practice in code development and a code exa
 In a future release, this may automatically raise exceptions using a Python object model.
 """
 
+
 def _cudaGetErrorEnum(error):
     if isinstance(error, driver.CUresult):
         err, name = driver.cuGetErrorName(error)
@@ -12,7 +13,8 @@ def _cudaGetErrorEnum(error):
     elif isinstance(error, nvrtc.nvrtcResult):
         return nvrtc.nvrtcGetErrorString(error)[1]
     else:
-        raise RuntimeError('Unknown error type: {}'.format(error))
+        raise RuntimeError("Unknown error type: {}".format(error))
+
 
 def checkCudaErrors(result):
     if result[0].value:

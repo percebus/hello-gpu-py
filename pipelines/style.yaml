@@ -23,6 +23,14 @@ steps:
 
 style:
   - name: pypyr.steps.echo
+    run: "{npm}"
+    in:
+      echoMe: "=== npx prettier --write ======================================"
+  - name: pypyr.steps.shell
+    in:
+      cmd: "npx prettier {path} --write"
+
+  - name: pypyr.steps.echo
     in:
       echoMe: "=== poetry sort ========================================"
   - name: pypyr.steps.shell
@@ -30,9 +38,15 @@ style:
       cmd: poetry sort
 
   - name: pypyr.steps.echo
-    run: "{npm}"
     in:
-      echoMe: "=== npx prettier --write ======================================"
+      echoMe: "=== ruff check --fix ========================================="
   - name: pypyr.steps.shell
     in:
-      cmd: "npx prettier {path} --write"
+      cmd: python -m ruff check --fix {path}
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: "=== ruff format --fix ========================================"
+  - name: pypyr.steps.shell
+    in:
+      cmd: python -m ruff format {path}

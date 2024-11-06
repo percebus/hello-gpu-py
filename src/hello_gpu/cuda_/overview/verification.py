@@ -10,6 +10,7 @@ Next, the GPU is queried for their compute capability.
 Finally, the program is compiled to target our local compute capability architecture with FMAD enabled. The PTX
 """
 
+
 def verify() -> None:
     # Initialize CUDA Driver API
     checkCudaErrors(driver.cuInit(0))
@@ -20,7 +21,7 @@ def verify() -> None:
     # Derive target architecture for device 0
     major = checkCudaErrors(driver.cuDeviceGetAttribute(driver.CUdevice_attribute.CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MAJOR, cuDevice))
     minor = checkCudaErrors(driver.cuDeviceGetAttribute(driver.CUdevice_attribute.CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MINOR, cuDevice))
-    arch_arg = bytes(f'--gpu-architecture=compute_{major}{minor}', 'ascii')
+    arch_arg = bytes(f"--gpu-architecture=compute_{major}{minor}", "ascii")
 
     # Create program
     prog = checkCudaErrors(nvrtc.nvrtcCreateProgram(str.encode(saxpy), b"saxpy.cu", 0, [], []))
@@ -84,7 +85,8 @@ def verify() -> None:
     # and assigns a memory size to store this value using np.array.
     #
     # Like cuMemcpyHtoDAsync, cuLaunchKernel expects void** in the argument list.
-    # In the earlier code example, it creates void** by grabbing the void* value of each individual argument and placing them into its own contiguous memory.
+    # In the earlier code example,
+    # it creates void** by grabbing the void* value of each individual argument and placing them into its own contiguous memory.
     #
     # The following code example is not intuitive
     # Subject to change in a future release
@@ -95,19 +97,21 @@ def verify() -> None:
     args = [a, dX, dY, dOut, n]
     args = np.array([arg.ctypes.data for arg in args], dtype=np.uint64)
 
-    checkCudaErrors(driver.cuLaunchKernel(
-        kernel,
-        NUM_BLOCKS,  # grid x dim
-        1,  # grid y dim
-        1,  # grid z dim
-        NUM_THREADS,  # block x dim
-        1,  # block y dim
-        1,  # block z dim
-        0,  # dynamic shared memory
-        stream,  # stream
-        args.ctypes.data,  # kernel arguments
-        0,  # extra (ignore)
-    ))
+    checkCudaErrors(
+        driver.cuLaunchKernel(
+            kernel,
+            NUM_BLOCKS,  # grid x dim
+            1,  # grid y dim
+            1,  # grid z dim
+            NUM_THREADS,  # block x dim
+            1,  # block y dim
+            1,  # block z dim
+            0,  # dynamic shared memory
+            stream,  # stream
+            args.ctypes.data,  # kernel arguments
+            0,  # extra (ignore)
+        )
+    )
 
     checkCudaErrors(driver.cuMemcpyDtoHAsync(hOut.ctypes.data, dOutclass, bufferSize, stream))
     checkCudaErrors(driver.cuStreamSynchronize(stream))

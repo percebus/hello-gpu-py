@@ -20,7 +20,7 @@ def run() -> None:
     for t in range(2000):
         # Forward pass: compute predicted y
         # y = a + b x + c x^2 + d x^3
-        y_pred = a + b * x + c * x ** 2 + d * x ** 3
+        y_pred = a + b * x + c * x**2 + d * x**3
 
         # Compute and print loss
         loss = np.square(y_pred - y).sum()
@@ -31,8 +31,8 @@ def run() -> None:
         grad_y_pred = 2.0 * (y_pred - y)
         grad_a = grad_y_pred.sum()
         grad_b = (grad_y_pred * x).sum()
-        grad_c = (grad_y_pred * x ** 2).sum()
-        grad_d = (grad_y_pred * x ** 3).sum()
+        grad_c = (grad_y_pred * x**2).sum()
+        grad_d = (grad_y_pred * x**3).sum()
 
         # Update weights
         a -= learning_rate * grad_a
@@ -40,7 +40,7 @@ def run() -> None:
         c -= learning_rate * grad_c
         d -= learning_rate * grad_d
 
-    print(f'Result: y = {a} + {b} x + {c} x^2 + {d} x^3')
+    print(f"Result: y = {a} + {b} x + {c} x^2 + {d} x^3")
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ functions = [
     verify_torch,
 ]
 
+
 def verify_all() -> None:
     for fn in functions:
         fn()
