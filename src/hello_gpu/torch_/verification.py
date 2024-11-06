@@ -2,7 +2,7 @@ import torch
 
 
 # SRC: https://pytorch.org/get-started/locally/#windows-pip
-def run() -> None:
+def verify_tensor() -> None:
     # The output should be something similar to:
     #
     # tensor([
@@ -13,8 +13,19 @@ def run() -> None:
     #   [0.4675, 0.3947, 0.1426]
     # ])
     x = torch.rand(5, 3)
-
     print(x)
+    print('tensor is available')
 
-if __name__ == '__main__':
-    run()
+
+def verify_cuda() -> bool:
+    is_available = torch.cuda.is_available()
+    if is_available:
+        print('CUDA is available')
+        return is_available
+    else:
+        raise ValueError('CUDA is not available')
+
+
+def verify_all() -> None:
+    verify_tensor()
+    verify_cuda()

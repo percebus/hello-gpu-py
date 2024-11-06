@@ -1,5 +1,5 @@
 """
-It’s common practice to write CUDA kernels near the top of a translation unit, so write it next.
+It's common practice to write CUDA kernels near the top of a translation unit, so write it next.
 The entire kernel is wrapped in triple quotes to form a string.
 The string is compiled later using NVRTC.
 This is the only part of CUDA Python that requires some understanding of CUDA C++.

@@ -1,8 +1,8 @@
 import numpy as np
 from cuda.bindings import driver, nvrtc
 
-from src.hello_gpu.cuda.overview.errors import checkCudaErrors
-from src.hello_gpu.cuda.overview.kernel import saxpy
+from src.hello_gpu.cuda_.overview.errors import checkCudaErrors
+from src.hello_gpu.cuda_.overview.kernel import saxpy
 
 """
 In the following code example, the Driver API is initialized so that the NVIDIA driver and GPU are accessible.
@@ -10,7 +10,7 @@ Next, the GPU is queried for their compute capability.
 Finally, the program is compiled to target our local compute capability architecture with FMAD enabled. The PTX
 """
 
-def run() -> None:
+def verify() -> None:
     # Initialize CUDA Driver API
     checkCudaErrors(driver.cuInit(0))
 
@@ -123,3 +123,5 @@ def run() -> None:
     checkCudaErrors(driver.cuMemFree(dOutclass))
     checkCudaErrors(driver.cuModuleUnload(module))
     checkCudaErrors(driver.cuCtxDestroy(context))
+
+    print("All checks pass")

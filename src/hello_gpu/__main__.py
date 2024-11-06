@@ -1,8 +1,8 @@
-from src.hello_gpu.cuda.overview import app as cuda_app
+from src.hello_gpu.verification import verify_all
 
 
 def run() -> None:
-    cuda_app.run()
+    verify_all()
 
 if __name__ == '__main__':
     run()
