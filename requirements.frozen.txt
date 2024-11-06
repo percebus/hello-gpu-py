@@ -4,7 +4,7 @@ colorama==0.4.6
 cuda-python==12.6.1
 filelock==3.16.1
 fsspec==2024.10.0
--e git+ssh://git@github.com/percebus/hello-gpu-py.git@a16272af21f78b02c080e2aad175adb7db3a9a01#egg=hello_gpu_py
+-e git+ssh://git@github.com/percebus/hello-gpu-py.git@66364a46c6683651c0a053b892880a11bfbdb863#egg=hello_gpu_py
 iniconfig==2.0.0
 Jinja2==3.1.4
 MarkupSafe==3.0.2
@@ -31,8 +31,8 @@ setuptools==75.3.0
 six==1.16.0
 sympy==1.13.1
 tomli_w==1.1.0
-torch==2.5.1
-torchaudio==2.5.1
-torchvision==0.20.1
+torch==2.5.1+cu124
+torchaudio==2.5.1+cu124
+torchvision==0.20.1+cu124
 typing_extensions==4.12.2
 userpath==1.9.2
