@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="14.632" timestamp="2024-11-06T09:43:43.632760-06:00" hostname="DESKTOP-SACB1K4"><testcase classname="tests.hello_gpu.cuda_.overview.test_cuda_verification" name="test_verify_does_NOT_raises_Exception" time="3.414" /><testcase classname="tests.hello_gpu.torch_.test_torch_verification" name="test__verify_all__does_NOT_raises_Exception" time="0.024"><failure message="ValueError: CUDA is not available">@pytest.mark.gpu
+    def test__verify_all__does_NOT_raises_Exception() -&gt; None:
+&gt;       assert_that(verification.verify_all(), not_(raises(Exception)))
+
+tests\hello_gpu\torch_\test_torch_verification.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src\hello_gpu\torch_\verification.py:35: in verify_all
+    verify_cuda()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def verify_cuda() -&gt; bool:
+        print(torch.version.cuda)
+        is_available = torch.cuda.is_available()
+        if not is_available:
+&gt;           raise ValueError('CUDA is not available')
+E           ValueError: CUDA is not available
+
+src\hello_gpu\torch_\verification.py:24: ValueError</failure></testcase></testsuite></testsuites>

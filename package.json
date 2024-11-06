@@ -1,0 +1,17 @@
+{
+  "name": "hello-gpu-py",
+  "version": "0.1.0",
+  "scripts": {
+    "prettier": "prettier .",
+    "prettier:write": "npm run prettier -- --write",
+    "prettier:check": "npm run prettier -- --check",
+    "lint": "npm run prettier:check",
+    "style": "npm run prettier:write",
+    "poststyle": "npm run lint",
+    "pretest": "npm run lint",
+    "test": "exit 0"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

@@ -1,0 +1,21 @@
+context_parser: pypyr.parser.keyvaluepairs
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: "= pypyr lint ================================================"
+  - name: pypyr.steps.default
+    comment: set default values for optional cli inputs
+    in:
+      defaults:
+        npm: True
+        path: .
+        stats: False
+
+  - name: pypyr.steps.echo
+    run: "{npm}"
+    in:
+      echoMe: "=== npx prettier --check ===================================="
+  - name: pypyr.steps.shell
+    run: "{npm}"
+    in:
+      cmd: "npx prettier {path} --check"

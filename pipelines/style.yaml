@@ -1,0 +1,38 @@
+context_parser: pypyr.parser.keyvaluepairs
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: "= pypyr style ================================================="
+  - name: pypyr.steps.default
+    comment: set default values for optional cli inputs
+    in:
+      defaults:
+        npm: True
+        path: .
+        lint: True
+        stats: False
+
+  - name: pypyr.steps.call
+    in:
+      call: style
+
+  - name: pypyr.steps.shell
+    run: "{lint}"
+    in:
+      cmd: "python -m pypyr lint path={path} npm={npm} stats={stats}"
+
+style:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: "=== poetry sort ========================================"
+  - name: pypyr.steps.shell
+    in:
+      cmd: poetry sort
+
+  - name: pypyr.steps.echo
+    run: "{npm}"
+    in:
+      echoMe: "=== npx prettier --write ======================================"
+  - name: pypyr.steps.shell
+    in:
+      cmd: "npx prettier {path} --write"
