@@ -5,6 +5,8 @@
 # pytest
 test-results.xml
 
+!data/config/** */
+data/*
 
 ########################
 ### Python.gitignore ### SRC: https://github.com/github/gitignore/blob/main/Python.gitignore
