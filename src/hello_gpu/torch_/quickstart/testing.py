@@ -23,8 +23,4 @@ def run(dataloader, model, loss_fn):
 
 def download_data() -> FashionMNIST:
     # Download test data from open datasets.
-    return FashionMNIST(
-        root="data",
-        train=False,
-        download=True,
-        transform=ToTensor())
+    return FashionMNIST(root="data", train=False, download=True, transform=ToTensor())

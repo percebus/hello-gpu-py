@@ -9,6 +9,7 @@ from src.hello_gpu.torch_.quickstart.models import model
 loss_fn = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 
+
 def run(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
@@ -31,8 +32,4 @@ def run(dataloader, model, loss_fn, optimizer):
 
 def download_data() -> FashionMNIST:
     # Download training data from open datasets.
-    return FashionMNIST(
-        root="data",
-        train=True,
-        download=True,
-        transform=ToTensor())
+    return FashionMNIST(root="data", train=True, download=True, transform=ToTensor())

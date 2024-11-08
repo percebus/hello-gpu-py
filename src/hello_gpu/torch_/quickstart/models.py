@@ -8,10 +8,12 @@ print(model)
 
 default_path: str = "./data/model.pth"
 
+
 def save(path: str = None):
     _path: str = path or default_path
     torch.save(model.state_dict(), _path)
     print("Saved PyTorch Model State to model.pth")
+
 
 def load(path: str = None):
     _path: str = path or default_path

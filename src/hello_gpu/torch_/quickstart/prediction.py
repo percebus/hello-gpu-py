@@ -1,8 +1,8 @@
 import torch
 
+from src.hello_gpu.torch_.quickstart import models
 from src.hello_gpu.torch_.quickstart.data import test_data
 from src.hello_gpu.torch_.quickstart.device import device_name
-from src.hello_gpu.torch_.quickstart import models
 
 classes = [
     "T-shirt/top",
@@ -17,6 +17,7 @@ classes = [
     "Ankle boot",
 ]
 
+
 def run() -> None:
     models.load()
     models.model.eval()
@@ -30,5 +31,6 @@ def run() -> None:
         actual = classes[y]
         print(f'Predicted: "{predicted}", Actual: "{actual}"')
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run()
