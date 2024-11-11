@@ -2,6 +2,7 @@ import os
 import sys
 
 from src.hello_gpu.config.configuration import configuration
+from src.hello_gpu.cu_py.introduction.benchmark import simple as cu_py_benchmark
 from src.hello_gpu.cuda_.overview import verification as cuda_verification
 from src.hello_gpu.py_torch.examples.warm_up.neural_network.benchmark import simple as torch_benchmark
 
@@ -23,6 +24,7 @@ def run_verifications() -> None:
 
 def run_benchmarks() -> None:
     logger.info("Running benchmarks...")
+    cu_py_benchmark.run()
     torch_benchmark.run()
     logger.info("Benchmarks completed.")
 
