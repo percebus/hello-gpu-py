@@ -3,7 +3,7 @@ import sys
 
 from src.hello_gpu.config.configuration import configuration
 from src.hello_gpu.cuda_.overview import verification as cuda_verification
-from src.hello_gpu.torch_.examples.warm_up.neural_network.benchmark import simple as torch_benchmark
+from src.hello_gpu.py_torch.examples.warm_up.neural_network.benchmark import simple as torch_benchmark
 
 logger = configuration.get_logger(__name__)
 
