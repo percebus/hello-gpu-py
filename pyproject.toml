@@ -13,6 +13,7 @@ python = "^3.12"
 # FIXME ~12.6.2 fails
 # "Unable to find installation candidates for cuda-python (12.6.2)"
 cuda-python = "12.6.1"
+cupy-cuda12x = "^13.3.0"
 datasets = {extras = ["vision"], version = "^3.1.0"}
 logging = "^0.4.9.6"
 
@@ -35,6 +36,10 @@ ruff = "^0.7.2"
 name = "pytorch-gpu"
 url = "https://download.pytorch.org/whl/cu124"
 priority = "explicit"
+
+[virtualenvs]
+create = true
+in-project = true
 
 [build-system]
 requires = ["poetry-core"]
