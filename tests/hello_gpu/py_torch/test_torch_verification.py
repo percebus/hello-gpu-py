@@ -1,7 +1,7 @@
 import pytest
 from hamcrest import assert_that, not_, raises
 
-from src.hello_gpu.torch_ import verification
+from src.hello_gpu.py_torch import verification
 
 
 @pytest.mark.gpu

@@ -1,4 +1,4 @@
-from src.hello_gpu.torch_.quickstart import data, models, testing, training
+from src.hello_gpu.py_torch.quickstart import data, models, testing, training
 
 
 def run() -> None:

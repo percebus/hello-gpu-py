@@ -1,8 +1,8 @@
 import torch
 
-from src.hello_gpu.torch_.quickstart import models
-from src.hello_gpu.torch_.quickstart.data import test_data
-from src.hello_gpu.torch_.quickstart.device import device_name
+from src.hello_gpu.py_torch.quickstart import models
+from src.hello_gpu.py_torch.quickstart.data import test_data
+from src.hello_gpu.py_torch.quickstart.device import device_name
 
 classes = [
     "T-shirt/top",

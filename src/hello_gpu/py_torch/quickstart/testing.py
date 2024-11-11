@@ -2,7 +2,7 @@ import torch
 from torchvision.datasets import FashionMNIST
 from torchvision.transforms import ToTensor
 
-from src.hello_gpu.torch_.quickstart.device import device_name
+from src.hello_gpu.py_torch.quickstart.device import device_name
 
 
 def run(dataloader, model, loss_fn):

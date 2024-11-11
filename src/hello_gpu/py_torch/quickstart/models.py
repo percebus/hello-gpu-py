@@ -1,7 +1,7 @@
 import torch
 
-from src.hello_gpu.torch_.quickstart.device import device_name
-from src.hello_gpu.torch_.quickstart.neural_network import neural_network
+from src.hello_gpu.py_torch.quickstart.device import device_name
+from src.hello_gpu.py_torch.quickstart.neural_network import neural_network
 
 model = neural_network.to(device_name)
 print(model)

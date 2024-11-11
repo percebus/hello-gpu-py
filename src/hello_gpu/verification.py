@@ -1,5 +1,5 @@
 from src.hello_gpu.cuda_.overview.verification import verify as verify_cuda
-from src.hello_gpu.torch_.verification import verify_all as verify_torch
+from src.hello_gpu.py_torch.verification import verify_all as verify_torch
 
 functions = [
     verify_cuda,

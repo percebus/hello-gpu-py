@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision.datasets import FashionMNIST
 
-from src.hello_gpu.torch_.quickstart import testing, training
+from src.hello_gpu.py_torch.quickstart import testing, training
 
 training_data: FashionMNIST = training.download_data()
 test_data: FashionMNIST = testing.download_data()

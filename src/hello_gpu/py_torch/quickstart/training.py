@@ -3,8 +3,8 @@ from torch import nn
 from torchvision.datasets import FashionMNIST
 from torchvision.transforms import ToTensor
 
-from src.hello_gpu.torch_.quickstart.device import device_name
-from src.hello_gpu.torch_.quickstart.models import model
+from src.hello_gpu.py_torch.quickstart.device import device_name
+from src.hello_gpu.py_torch.quickstart.models import model
 
 loss_fn = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
