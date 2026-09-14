@@ -2,7 +2,7 @@
 name = "hello-gpu-py"
 version = "0.1.0"
 description = "GPU python excercises"
-authors = ["JC Guerrero <JCystems@gMail.com>"]
+authors = ["JCystems"]
 license = "SEE LICENSE IN LICENSE.md"
 readme = "README.md"
 packages = [{include = "src"}]
